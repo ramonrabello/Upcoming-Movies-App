@@ -3,10 +3,12 @@ package com.arctouch.codechallenge.details
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
+import android.view.MenuItem
 import com.arctouch.codechallenge.R
 import com.arctouch.codechallenge.model.Movie
 import com.arctouch.codechallenge.util.MovieImageUrlBuilder
 import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.abc_alert_dialog_title_material.view.title_template
 import kotlinx.android.synthetic.main.activity_movie_details.fab
 import kotlinx.android.synthetic.main.activity_movie_details.movie_backdrop_image
 import kotlinx.android.synthetic.main.activity_movie_details.toolbar
@@ -26,6 +28,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_details)
         setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
@@ -43,5 +46,15 @@ class MovieDetailsActivity : AppCompatActivity() {
             movie_genres.text = movie.genres?.joinToString(separator = ", ") { it.name }
             movie_overview.text = movie.overview
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId){
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
