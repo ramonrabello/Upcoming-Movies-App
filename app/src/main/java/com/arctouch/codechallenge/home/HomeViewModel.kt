@@ -3,6 +3,7 @@ package com.arctouch.codechallenge.home
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import com.arctouch.codechallenge.R
+import com.arctouch.codechallenge.core.ktx.commonSubscribe
 import com.arctouch.codechallenge.data.Cache
 import com.arctouch.codechallenge.data.repository.remote.TmdbRemoteRepository
 import com.arctouch.codechallenge.model.Movie
@@ -41,9 +42,7 @@ class HomeViewModel @Inject constructor(private val repository: TmdbRemoteReposi
                 // save all genres first to be used later by upcoming events observable
                 .map { genres -> Cache.cacheGenres(genres) }
                 .concatMap { repository.upcomingMovies(currentPage) }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
+                .commonSubscribe(
                         { response ->
                             val moviesWithGenres = response.results.map { movie ->
                                 movie.copy(genres = Cache.genres.filter { movie.genreIds?.contains(it.id) == true })
