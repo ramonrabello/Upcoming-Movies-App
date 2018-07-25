@@ -1,7 +1,7 @@
 package com.arctouch.codechallenge.application
 
 import com.arctouch.codechallenge.di.component.DaggerAppComponent
-import com.github.ramonrabello.favoritehero.core.di.Injector
+import com.arctouch.codechallenge.di.Injector
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 

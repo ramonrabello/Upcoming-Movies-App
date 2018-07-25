@@ -1,4 +1,4 @@
-package com.github.ramonrabello.favoritehero.core.di
+package com.arctouch.codechallenge.di
 
 import android.app.Activity
 import android.app.Application
@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
 import com.arctouch.codechallenge.application.UpcomingMoviesApplication
+import com.arctouch.codechallenge.di.Injectable
 import dagger.android.AndroidInjection
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.HasSupportFragmentInjector
