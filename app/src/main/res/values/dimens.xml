@@ -3,4 +3,5 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
     <dimen name="movie_poster_image_width">120dp</dimen>
+    <dimen name="content_movie_details_overlapTop">72dp</dimen>
 </resources>

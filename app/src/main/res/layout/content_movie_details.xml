@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:behavior_overlapTop="72dp"
+    app:behavior_overlapTop="@dimen/content_movie_details_overlapTop"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".details.MovieDetailsActivity"
     tools:showIn="@layout/activity_movie_details">
@@ -55,7 +55,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="@string/large_text"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/black"
             app:layout_constraintStart_toStartOf="@id/start_guideline"
@@ -85,12 +84,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/text_margin"
-            android:text="@string/large_text"
             android:textAppearance="?android:attr/textAppearanceSmall"
             app:layout_constraintEnd_toEndOf="@id/end_guideline"
             app:layout_constraintStart_toStartOf="@id/start_guideline"
-            app:layout_constraintTop_toBottomOf="@id/movie_genres"
-            tools:text="@string/large_text" />
+            app:layout_constraintTop_toBottomOf="@id/movie_genres" />
 
     </android.support.constraint.ConstraintLayout>
 

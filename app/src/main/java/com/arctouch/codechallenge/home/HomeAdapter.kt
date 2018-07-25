@@ -12,10 +12,10 @@ import com.arctouch.codechallenge.model.Movie
 import com.arctouch.codechallenge.util.MovieImageUrlBuilder
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import kotlinx.android.synthetic.main.content_movie_details.movie_genres
-import kotlinx.android.synthetic.main.content_movie_details.movie_name
-import kotlinx.android.synthetic.main.content_movie_details.movie_release_date
-import kotlinx.android.synthetic.main.movie_item.view.*
+import kotlinx.android.synthetic.main.movie_item.view.genresTextView
+import kotlinx.android.synthetic.main.movie_item.view.posterImageView
+import kotlinx.android.synthetic.main.movie_item.view.releaseDateTextView
+import kotlinx.android.synthetic.main.movie_item.view.titleTextView
 
 /**
  * Adapter that holds movie items.
@@ -58,9 +58,14 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(movies[position])
 
-    fun addMovies(upcomingMovies:List<Movie>){
+    fun addMovies(upcomingMovies: List<Movie>) {
         val positionStart = movies.size.plus(1)
         movies.addAll(upcomingMovies)
         notifyItemRangeChanged(positionStart, upcomingMovies.size)
+    }
+
+    fun clear(){
+        movies.clear()
+        notifyDataSetChanged()
     }
 }
