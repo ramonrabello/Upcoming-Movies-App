@@ -12,5 +12,5 @@ class TmdbRemoteRepository @Inject constructor(private val api: TmdbApi) {
     fun genres() = api.genres()
     fun upcomingMovies(page:Long) = api.upcomingMovies(page)
     fun searchMovies(query:String) = api.searchMovies(query)
-    fun movie(id:Long) : Observable<Movie> = api.movie(id)
+    fun movie(id:Int) : Observable<Movie> = api.movie(id)
 }

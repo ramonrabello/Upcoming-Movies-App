@@ -27,6 +27,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
         fun bind(movie: Movie) {
             itemView.apply {
+                tag = movie
                 titleTextView.text = movie.title
                 genresTextView.text = movie.genres?.joinToString(separator = ", ") { it.name }
                 releaseDateTextView.text = movie.releaseDate
@@ -38,7 +39,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
                 setOnClickListener {
                     val context = itemView.context
                     val intent = Intent(context, MovieDetailsActivity::class.java)
-                    intent.putExtra(MovieDetailsActivity.EXTRA_MOVIE, movie)
+                    intent.putExtra(MovieDetailsActivity.EXTRA_MOVIE_ID, (tag as Movie).id)
                     context.startActivity(intent)
                 }
 

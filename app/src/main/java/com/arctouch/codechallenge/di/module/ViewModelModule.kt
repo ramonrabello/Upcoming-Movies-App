@@ -3,6 +3,7 @@ package com.arctouch.codechallenge.di.module
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import com.arctouch.codechallenge.core.arch.viewmodel.ViewModelFactory
+import com.arctouch.codechallenge.details.MovieDetailsViewModel
 import com.arctouch.codechallenge.di.annotation.ViewModelKey
 import com.arctouch.codechallenge.home.HomeViewModel
 import dagger.Binds
@@ -22,8 +23,8 @@ abstract class ViewModelModule {
     @ViewModelKey(HomeViewModel::class)
     abstract fun bindHomeViewModel(homeViewModel: HomeViewModel): ViewModel
 
-//    @Binds
-//    @IntoMap
-//    @ViewModelKey(MovieDetailsViewModel::class)
-//    abstract fun bindFavoriteHeroViewModel(movieDetailsViewModel: MovieDetailsViewModel) : ViewModel
+    @Binds
+    @IntoMap
+    @ViewModelKey(MovieDetailsViewModel::class)
+    abstract fun bindMovieDetailsViewModel(movieDetailsViewModel: MovieDetailsViewModel): ViewModel
 }

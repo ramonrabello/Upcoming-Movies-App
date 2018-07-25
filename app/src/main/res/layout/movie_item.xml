@@ -24,7 +24,7 @@
             android:adjustViewBounds="true"
             android:importantForAccessibility="no"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_image_placeholder" />
+            app:srcCompat="@drawable/ic_image_placeholder" />
 
         <TextView
             android:id="@+id/titleTextView"

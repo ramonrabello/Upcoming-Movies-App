@@ -25,7 +25,7 @@ class MovieDetailsViewModel @Inject constructor(private val repository: TmdbRemo
     val movieLiveData = MutableLiveData<Movie>()
     val errorMessageLiveData = MutableLiveData<Int>()
 
-    fun loadMovieDetails(id:Long) {
+    fun loadMovieDetails(id:Int) {
         val disposable = repository.movie(id).commonSubscribe(
                         { response -> movieLiveData.postValue(response) }, // onNext()
                         { errorMessageLiveData.postValue(R.string.loading_movies_error) } // onError()

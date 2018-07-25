@@ -5,6 +5,8 @@
     <string name="backdrop_movie_image_content_description">Backdrop movie image</string>
     <string name="movie_poster_image_content_description">Movie poster image</string>
     <string name="loading_movies_error">Error loading upcoming movies.</string>
+    <string name="loading_movie_details_error">Error loading movie details.</string>
     <string name="action_search">Search</string>
     <string name="searching_movie_error">Error while searching movie.</string>
+    <string name="intent_chooser_title">Share using</string>
 </resources>
