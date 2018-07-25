@@ -91,7 +91,7 @@ class MovieDetailsActivity : AppCompatActivity() {
                 fab.setOnClickListener {
                     val intent = Intent(Intent.ACTION_SEND)
                     intent.type = "text/plain"
-                    intent.putExtra(Intent.EXTRA_TEXT, "Hey! Just check this excellent movie that I found: ${movie.title}")
+                    intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_text, movie.id))
                     startActivity(Intent.createChooser(intent, getString(R.string.intent_chooser_title)))
                 }
             }

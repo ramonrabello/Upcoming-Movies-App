@@ -9,4 +9,5 @@
     <string name="action_search">Search</string>
     <string name="searching_movie_error">Error while searching movie.</string>
     <string name="intent_chooser_title">Share using</string>
+    <string name="share_text">Hey! Just check this excellent movie that I found: https://www.themoviedb.org/movie/%d</string>
 </resources>
