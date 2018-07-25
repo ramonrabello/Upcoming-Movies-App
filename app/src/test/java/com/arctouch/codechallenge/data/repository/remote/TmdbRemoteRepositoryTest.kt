@@ -13,31 +13,31 @@ import org.mockito.MockitoAnnotations
 class TmdbRemoteRepositoryTest {
 
     @Mock
-    lateinit var marvelApi: TmdbApi
+    lateinit var tmdbApi: TmdbApi
     private lateinit var repository: TmdbRemoteRepository
 
     @Before
     fun beforeTest() {
         MockitoAnnotations.initMocks(this)
-        repository = TmdbRemoteRepository(marvelApi)
+        repository = TmdbRemoteRepository(tmdbApi)
     }
 
     @Test
     fun `should verify if all upcoming movies were retrieved`() {
         val currentPage = 1L
         repository.upcomingMovies(currentPage)
-        verify(marvelApi).upcomingMovies(currentPage)
+        verify(tmdbApi).upcomingMovies(currentPage)
     }
 
     @Test
     fun `should verify if movies were searched`() {
         repository.searchMovies("Mission Impossible")
-        verify(marvelApi).searchMovies("Mission Impossible")
+        verify(tmdbApi).searchMovies("Mission Impossible")
     }
 
     @Test
     fun `should verify if all genres were retrieved`() {
         repository.genres()
-        verify(marvelApi).genres()
+        verify(tmdbApi).genres()
     }
 }
