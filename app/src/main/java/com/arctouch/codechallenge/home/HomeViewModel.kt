@@ -37,6 +37,8 @@ class HomeViewModel @Inject constructor(private val repository: TmdbRemoteReposi
 
         repository.genres()
                 .flatMap { genreResponse -> Observable.just(genreResponse.genres) }
+
+                // save all genres first to be used later by upcoming events observable
                 .map { genres -> Cache.cacheGenres(genres) }
                 .concatMap { repository.upcomingMovies(currentPage) }
                 .subscribeOn(Schedulers.io())
