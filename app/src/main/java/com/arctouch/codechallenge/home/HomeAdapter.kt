@@ -1,31 +1,52 @@
 package com.arctouch.codechallenge.home
 
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.arctouch.codechallenge.R
+import com.arctouch.codechallenge.core.ktx.toTypeface
+import com.arctouch.codechallenge.details.MovieDetailsActivity
 import com.arctouch.codechallenge.model.Movie
 import com.arctouch.codechallenge.util.MovieImageUrlBuilder
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import kotlinx.android.synthetic.main.movie_item.view.*
+import kotlinx.android.synthetic.main.movie_item.view.genresTextView
+import kotlinx.android.synthetic.main.movie_item.view.posterImageView
+import kotlinx.android.synthetic.main.movie_item.view.releaseDateTextView
+import kotlinx.android.synthetic.main.movie_item.view.titleTextView
 
-class HomeAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+/**
+ * Adapter that holds movie items.
+ */
+class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+    private val movies = mutableListOf<Movie>()
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private val movieImageUrlBuilder = MovieImageUrlBuilder()
-
         fun bind(movie: Movie) {
-            itemView.titleTextView.text = movie.title
-            itemView.genresTextView.text = movie.genres?.joinToString(separator = ", ") { it.name }
-            itemView.releaseDateTextView.text = movie.releaseDate
+            itemView.apply {
+                tag = movie
+                titleTextView.text = movie.title
+                genresTextView.text = movie.genres?.joinToString(separator = ", ") { it.name }
+                releaseDateTextView.text = movie.releaseDate
+                Glide.with(itemView.context)
+                        .load(movie.posterPath?.let { MovieImageUrlBuilder.buildPosterUrl(it) })
+                        .apply(RequestOptions().placeholder(R.drawable.ic_image_placeholder))
+                        .into(posterImageView)
 
-            Glide.with(itemView)
-                .load(movie.posterPath?.let { movieImageUrlBuilder.buildPosterUrl(it) })
-                .apply(RequestOptions().placeholder(R.drawable.ic_image_placeholder))
-                .into(itemView.posterImageView)
+                setOnClickListener {
+                    val context = itemView.context
+                    val intent = Intent(context, MovieDetailsActivity::class.java)
+                    intent.putExtra(MovieDetailsActivity.EXTRA_MOVIE_ID, (tag as Movie).id)
+                    context.startActivity(intent)
+                }
+
+                titleTextView.toTypeface("OpenSans-SemiBold")
+                releaseDateTextView.toTypeface("OpenSans-Regular")
+                genresTextView.toTypeface("OpenSans-Light")
+            }
         }
     }
 
@@ -37,4 +58,15 @@ class HomeAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<HomeAd
     override fun getItemCount() = movies.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(movies[position])
+
+    fun addMovies(upcomingMovies: List<Movie>) {
+        val positionStart = movies.size.plus(1)
+        movies.addAll(upcomingMovies)
+        notifyItemRangeChanged(positionStart, upcomingMovies.size)
+    }
+
+    fun clear(){
+        movies.clear()
+        notifyDataSetChanged()
+    }
 }

@@ -1,4 +1,13 @@
 <resources>
-    <string name="app_name">Code Challenge</string>
+    <string name="app_name">Upcoming Movies</string>
     <string name="movie_and_genres">%s - %s</string>
+    <string name="action_settings">Settings</string>
+    <string name="backdrop_movie_image_content_description">Backdrop movie image</string>
+    <string name="movie_poster_image_content_description">Movie poster image</string>
+    <string name="loading_movies_error">Error loading upcoming movies.</string>
+    <string name="loading_movie_details_error">Error loading movie details.</string>
+    <string name="action_search">Search</string>
+    <string name="searching_movie_error">Error while searching movie.</string>
+    <string name="intent_chooser_title">Share using</string>
+    <string name="share_text">Hey! Just check this excellent movie that I found: https://www.themoviedb.org/movie/%d</string>
 </resources>

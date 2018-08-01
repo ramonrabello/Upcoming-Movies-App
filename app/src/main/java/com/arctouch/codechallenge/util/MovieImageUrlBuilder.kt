@@ -1,17 +1,15 @@
 package com.arctouch.codechallenge.util
 
-import com.arctouch.codechallenge.api.TmdbApi
+import com.arctouch.codechallenge.BuildConfig
+import com.arctouch.codechallenge.network.RequestParams
 
-private val POSTER_URL = "https://image.tmdb.org/t/p/w154"
-private val BACKDROP_URL = "https://image.tmdb.org/t/p/w780"
+object MovieImageUrlBuilder {
 
-class MovieImageUrlBuilder {
-
-    fun buildPosterUrl(posterPath: String): String {
-        return POSTER_URL + posterPath + "?api_key=" + TmdbApi.API_KEY
+    fun buildPosterUrl(posterPath: String?): String {
+        return "${BuildConfig.POSTER_URL}$posterPath?${RequestParams.API_KEY}=${BuildConfig.API_KEY}"
     }
 
-    fun buildBackdropUrl(backdropPath: String): String {
-        return BACKDROP_URL + backdropPath + "?api_key=" + TmdbApi.API_KEY
+    fun buildBackdropUrl(backdropPath: String?): String {
+        return "${BuildConfig.BACKDROP_URL}$backdropPath?${RequestParams.API_KEY}=${BuildConfig.API_KEY}"
     }
 }
