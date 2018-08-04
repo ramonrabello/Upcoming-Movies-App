@@ -19,7 +19,7 @@ API Key because you will need them on your requests.
 ### Cloning
 Now you can clone the repo. You can use any Git clients or just type this in command line:
 
-    git clone git https://github.com/ramonrabello/Upcoming-Movies-App.git
+    git clone https://github.com/ramonrabello/Upcoming-Movies-App.git
 
 ### Setting up API keys
 Go to the `build.gradle` file and search for these two build config fields:
