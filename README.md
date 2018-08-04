@@ -24,7 +24,7 @@ Now you can clone the repo. You can use any Git clients or just type this in com
 ### Setting up API keys
 Go to the `build.gradle` file and search for these two build config fields:
 
-    buildConfigField "String", "API_KEY", '"GET_YOUR_API_KEY_AT_TDMB_DEVELOPER_PORTAL"'
+    buildConfigField "String", "API_KEY", '"GET_YOUR_API_KEY_AT_TMDB_DEVELOPER_PORTAL"'
    
 
 Just copy/paste your API keys and sync your project. Congratulations, now you can run the app!
